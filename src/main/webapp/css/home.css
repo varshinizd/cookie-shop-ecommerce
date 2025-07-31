@@ -1,0 +1,207 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fdf6f0;
+    margin: 0;
+}
+
+/* Top Bar */
+.top-bar {
+    background-color: #734d4d;
+    color: white;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.top-bar h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.add-btn {
+    background-color: #734d4d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+    background-color: #885f39;
+}
+
+/* Product Grid */
+.product-grid {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Product Card */
+.product-card {
+    background-color: #f9e8dd;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.product-card h3 {
+    color: #734d4d;
+    margin-bottom: 10px;
+}
+
+.product-card p {
+    color: #5c4033;
+    margin: 6px 0;
+    font-size: 15px;
+}
+
+.product-card strong {
+    color: #885f39;
+    font-weight: bold;
+}
+
+.no-products {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #734d4d;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 3rem;
+}
+
+/* Overlay Form */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    overflow-y: auto; /* ✅ allow scrolling if content overflows */
+    padding: 20px 0;   /* ✅ space around the form so close button doesn't get cut off */
+}
+
+.form-box {
+    background-color: #f9e8dd;
+    padding: 30px 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    width: 400px;
+    position: relative;
+    text-align: center;
+    max-height: 90vh;         /* ✅ prevent going off-screen */
+    overflow-y: auto;         /* ✅ scroll only the form box if image is big */
+}
+.form-box h2 {
+    color: #734d4d;
+    margin-bottom: 20px;
+}
+
+.form-box::-webkit-scrollbar {
+  display: none;
+}
+.form-box label:not(.custom-file-label) {
+    display: block;
+    text-align: left;
+    color: #734d4d;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.form-box input[type="text"],
+.form-box input[type="number"],
+.form-box textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d9bfa8;
+    border-radius: 8px;
+    background-color: #fff8f0;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+/* Hide actual file input */
+input[type="file"] {
+    display: none;
+}
+
+/* Styled label acting as file button */
+.custom-file-label {
+    display: inline-block;
+    background-color: #734d4d;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.custom-file-label:hover {
+    background-color: #885f39;
+}
+
+/* Preview Image */
+#imagePreview {
+    max-width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+    display: block;
+    margin: 10px auto 15px auto;
+    padding: 8px;
+    background: #fff;
+    border: 1px dashed #d9bfa8;
+}
+
+
+/* Submit Button */
+.form-box button {
+    margin-top: 20px;
+    background-color: #734d4d;
+    color: white;
+    padding: 10px 70px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-box button:hover {
+    background-color: #885f39;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 22px;
+    color: #734d4d;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #a0522d;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .form-box {
+        width: 90%;
+        padding: 20px;
+    }
+}
