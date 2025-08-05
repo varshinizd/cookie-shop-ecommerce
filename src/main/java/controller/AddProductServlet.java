@@ -16,10 +16,10 @@ import dao.ProductDAO;
 @MultipartConfig
 @WebServlet("/addProduct")
 public class AddProductServlet extends HttpServlet {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+
+	// Change this to your desired image storage path
+	private static final String IMAGE_STORAGE_DIR = "C:/ProductImages";
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -29,31 +29,27 @@ public class AddProductServlet extends HttpServlet {
 		int cost = Integer.parseInt(request.getParameter("cost"));
 		String added_by = "admin";
 
-		// Image
+		// Get uploaded file
 		Part filePart = request.getPart("image");
 		String fileName = filePart.getSubmittedFileName();
 
-		// Get actual path to "images" folder inside webapp
-		String uploadPath = getServletContext().getRealPath("/") + "images";
-		System.out.println("Upload path: " + uploadPath);
-
-		// Create directory if not exists
-		File uploadDir = new File(uploadPath);
+		// Make sure directory exists
+		File uploadDir = new File(IMAGE_STORAGE_DIR);
 		if (!uploadDir.exists()) uploadDir.mkdirs();
 
-		// Write file
-		String fullImagePath = uploadPath + File.separator + fileName;
+		// Save image to disk
+		String fullImagePath = IMAGE_STORAGE_DIR + File.separator + fileName;
 		filePart.write(fullImagePath);
 
-		// Save only relative path for JSP usage
-		String imagePath = "images/" + fileName;
+		// Store just the image name or relative path in DB
+		String imagePath = fileName;
 
-		// Store in DB
+		// Save product to DB
 		Product product = new Product(name, description, added_by, cost, imagePath);
 		ProductDAO dao = new ProductDAO();
 		dao.addProduct(product);
 
-		// Forward to JSP
+		// Fetch products to show
 		List<Product> products = ProductDAO.getProducts(added_by);
 		request.setAttribute("products", products);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");

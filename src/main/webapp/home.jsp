@@ -14,18 +14,23 @@
 </head>
 <body>
 
-    <div class="top-bar">
-        <h1>Welcome, <%= (currentUser != null) ? currentUser : "Guest" %>!</h1>
-        <% if ("admin".equalsIgnoreCase(currentUser)) { %>
-            <button class="add-btn" onclick="openOverlay()">+ Add Product</button>
-        <% } %>
-    </div>
+	<div class="top-bar">
+	    <h1>Welcome, <%= (currentUser != null) ? currentUser : "Guest" %>!</h1>
+	
+	    <input type="text" id="searchBox" placeholder="Search products..." />
+	
+	    <% if ("admin".equalsIgnoreCase(currentUser)) { %>
+	        <button class="add-btn" onclick="openOverlay()">+ Add Product</button>
+	    <% } %>
+	</div>
 
     <div class="product-grid">
         <% if (products != null && !products.isEmpty()) {
             for (Product p : products) { %>
                 <div class="product-card">
-                	<img src="<%= request.getContextPath() %>/<%= p.getImagePath() %>" width="150" height="150" alt="product image">
+                	<img src="image?name=<%= p.getImagePath() %>" alt="Product Image" 
+     				style="width: 200px; height: auto; object-fit: cover;">
+
                     <h3><%= p.getName() %></h3>
                     <p><%= p.getDescription() %></p>
                     <p><strong>₹ <%= p.getCost() %></strong></p>
@@ -66,5 +71,6 @@
     <% } %>
 
     <script src="<%= request.getContextPath() %>/js/home.js?v=4"></script>
+
 </body>
 </html>
