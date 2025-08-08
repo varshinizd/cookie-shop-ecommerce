@@ -86,4 +86,34 @@ public class ProductDAO {
         }
     	return success;
     }
+    
+    public static Product getProductByName(String name) {
+        Product product = null;
+
+        try {
+            Connection conn = DBConnection.getConnection();
+            String sql = "SELECT * FROM products WHERE name = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, name);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                product = new Product(
+                    rs.getString("name"),
+                    rs.getString("description"),
+                    rs.getString("added_by"),
+                    rs.getInt("cost"),
+                    rs.getString("imagePath")
+                );
+            }
+
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return product;
+    }
 }

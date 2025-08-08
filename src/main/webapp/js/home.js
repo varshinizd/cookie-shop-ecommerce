@@ -1,3 +1,4 @@
+console.log("✅ home.js loaded");
 function openOverlay() {
     document.getElementById('overlayForm').style.display = 'flex';
 }

@@ -4,7 +4,8 @@
 <%
     List<Product> products = (List<Product>) request.getAttribute("products");
     User user = (User) session.getAttribute("user");
-    String currentUser = (user != null) ? user.getUsername() : null;%>
+    String currentUser = (user != null) ? user.getUsername() : null;
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,29 +14,33 @@
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/home.css?v=4">
 </head>
 <body>
-
-	<div class="top-bar">
-	    <h1>Welcome, <%= (currentUser != null) ? currentUser : "Guest" %>!</h1>
-	
-	    <input type="text" id="searchBox" placeholder="Search products..." />
-	
-	    <% if ("admin".equalsIgnoreCase(currentUser)) { %>
-	        <button class="add-btn" onclick="openOverlay()">+ Add Product</button>
-	    <% } %>
-	</div>
+    <div class="top-bar">
+        <h1>Welcome, <%= (currentUser != null) ? currentUser : "Guest" %>!</h1>
+        <input type="text" id="searchBox" placeholder="Search products...">
+        <% if ("admin".equalsIgnoreCase(currentUser)) { %>
+            <button class="add-btn" onclick="openOverlay()">+ Add Product</button>
+        <% } else { %>
+            <div class="profile-icon">
+                <img src="images/dpicon.jpg" alt="Profile" />
+            </div>
+        <% } %>
+    </div>
 
     <div class="product-grid">
-        <% if (products != null && !products.isEmpty()) {
-            for (Product p : products) { %>
-                <div class="product-card">
-                	<img src="image?name=<%= p.getImagePath() %>" alt="Product Image" 
-     				style="width: 200px; height: auto; object-fit: cover;">
-
-                    <h3><%= p.getName() %></h3>
-                    <p><%= p.getDescription() %></p>
-                    <p><strong>₹ <%= p.getCost() %></strong></p>
-                </div>
-        <%  }
+        <% if (products != null && !products.isEmpty()) { 
+               for (Product p : products) {
+                   String encodedName = java.net.URLEncoder.encode(p.getName(), "UTF-8");
+        %>
+                    <a href="productPage.jsp?name=<%= encodedName %>">
+                        <div class="product-card">
+                            <img src="image?name=<%= p.getImagePath() %>"
+                                 alt="Product Image"
+                                 style="width: 200px; height: auto; object-fit: cover;">
+                            <h3 class="link"><%= p.getName() %></h3>
+                            <p class="link"><strong>₹ <%= p.getCost() %></strong></p>
+                        </div>
+                    </a>
+        <%     } 
            } else { %>
             <p class="no-products">No products to display.</p>
         <% } %>
@@ -48,7 +53,6 @@
             <span class="close-btn" onclick="closeOverlay()">×</span>
             <h2>Add New Product</h2>
             <form action="addProduct" method="post" enctype="multipart/form-data">
-
                 <!-- Custom styled file input -->
                 <label for="productImage" class="custom-file-label">Choose Product Image</label>
                 <input type="file" id="productImage" name="image" accept="image/*" onchange="previewImage(event)" required>
@@ -71,6 +75,5 @@
     <% } %>
 
     <script src="<%= request.getContextPath() %>/js/home.js?v=4"></script>
-
 </body>
 </html>

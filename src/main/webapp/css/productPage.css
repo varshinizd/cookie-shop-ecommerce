@@ -1,0 +1,121 @@
+/* Reset some basic defaults */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #fffef7; /* Creamy background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Product Container */
+.product-container {
+    max-width: 500px;
+    margin: 60px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Product Image */
+.product-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Product Name */
+.product-name {
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* Product Price */
+.product-price {
+    font-size: 22px;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+/* Form Layout */
+.product-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-form label {
+    font-size: 16px;
+    margin-bottom: 6px;
+    color: #444;
+}
+
+.product-form input[type="number"] {
+    width: 100px;
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+}
+
+button[type="submit"] {
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+button[type="submit"]:first-child {
+    background-color: #f0c14b;
+    color: #111;
+}
+
+button[type="submit"]:first-child:hover {
+    background-color: #e2ae3f;
+}
+
+button[formaction="buyNow"] {
+    background-color: #ff6f61;
+    color: white;
+}
+
+button[formaction="buyNow"]:hover {
+    background-color: #e85c4d;
+}
+
+/* Not Found Styling */
+h2 {
+    text-align: center;
+    margin-top: 100px;
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #555;
+}
+
+a:hover {
+    text-decoration: underline;
+}
