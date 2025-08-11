@@ -6,15 +6,9 @@ body {
     background-color: #fffaf4;
     color: #3e2c2c;
 }
-.link {
-    text-decoration: none;
-    color: inherit;
-    display: inline-block;
-    transform: scale(1.02);
-    transition: 0.2s;
-}
 
 /* Top bar */
+
 .top-bar {
     background-color: #6b3e3e;
     color: white;
@@ -54,7 +48,11 @@ body {
 .add-btn:hover {
     background-color: #ffc76e;
 }
-
+.delete-btn
+{
+	background-color: #6b3e3e; 
+	color: white; 
+}
 .profile-icon {
     width: 40px;
     height: 40px;
@@ -112,6 +110,12 @@ body {
     color: #5c3b3b;
 }
 
+.link
+{
+	text-decoration: none;
+	color: #5c3b3b;
+	display: block; 
+}
 /* No product message */
 .no-products {
     font-size: 1.2rem;

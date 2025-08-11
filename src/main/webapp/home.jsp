@@ -31,15 +31,23 @@
                for (Product p : products) {
                    String encodedName = java.net.URLEncoder.encode(p.getName(), "UTF-8");
         %>
-                    <a href="productPage.jsp?name=<%= encodedName %>">
+                    <a  class="link" href="productPage.jsp?name=<%= encodedName %>">
                         <div class="product-card">
                             <img src="image?name=<%= p.getImagePath() %>"
                                  alt="Product Image"
                                  style="width: 200px; height: auto; object-fit: cover;">
-                            <h3 class="link"><%= p.getName() %></h3>
-                            <p class="link"><strong>₹ <%= p.getCost() %></strong></p>
+                            <h3><%= p.getName() %></h3>
+                            <p><strong>₹ <%= p.getCost() %></strong></p>
+                     <%if ("admin".equalsIgnoreCase(currentUser)) {%>
+                     
+					<form action="deleteProduct" method="post" onsubmit="return confirm('Delete this product?');">
+					    <input type="hidden" name="name" value="<%= p.getName() %>">
+					    <button
+					     style="background-color: #6b3e3e; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer;" type="submit">Delete</button>
+					</form>
                         </div>
                     </a>
+                     <% } %>
         <%     } 
            } else { %>
             <p class="no-products">No products to display.</p>

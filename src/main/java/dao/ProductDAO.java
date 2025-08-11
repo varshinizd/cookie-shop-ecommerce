@@ -87,6 +87,32 @@ public class ProductDAO {
     	return success;
     }
     
+    public boolean deleteProduct(String name) throws SQLException
+    {
+    	if(!productExists(name))
+    	{
+    		return false;
+    	}
+    	boolean success = false;
+    	try
+    	{
+        	Connection conn = DBConnection.getConnection();
+        	String sql = "DELETE FROM products WHERE name = ?";
+        	PreparedStatement stmt = conn.prepareStatement(sql);
+        	stmt.setString(1, name);
+        	int rows = stmt.executeUpdate();
+        	success = rows>0;
+        	stmt.close();
+        	conn.close();
+        	System.out.println("Product deleted successfully");
+    	}
+    	catch(Exception e)
+    	{
+			e.printStackTrace();
+            System.out.print("Failed to delete from the db here");
+    	}
+    	return success;
+    }
     public static Product getProductByName(String name) {
         Product product = null;
 
