@@ -1,121 +1,129 @@
-/* Reset some basic defaults */
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #fffef7; /* Creamy background */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
+/* Reset and base setup */
+ body {
+     margin: 0;
+     padding: 0;
+     font-family: 'Segoe UI', sans-serif;
+     background-color: #fffaf4;
+     color: #3e2c2c;
+ }
+
+ a { text-decoration: none; color: #3e2c2c; }
+
+ /* Product page layout */
+  .product-page {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto;
+      gap: 40px;
+  }
+
+  .left-column {
+      flex: 1;
+      min-width: 300px;
+      background-color: #fce8d5;
+      border-radius: 18px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+  }
+
+  .left-column img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 12px;
+  }
+
+  .product-price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-top: 16px;
+      color: #6b3e3e;
+  }
+
+  .right-column {
+      flex: 2;
+      max-height: 600px;
+      overflow-y: auto;
+      padding: 30px;
+      background-color: #fce8d5;
+      border-radius: 18px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+      display: flex;
+      flex-direction: column;
+  }
+
+  .right-column h2 {
+font-size: 2rem;
+margin-bottom: 20px;
+color: #6b3e3e;
+text-align: center; /* <-- add this line */
 }
 
-/* Product Container */
-.product-container {
-    max-width: 500px;
-    margin: 60px auto;
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-/* Product Image */
-.product-image {
-    width: 100%;
-    max-height: 400px;
-    object-fit: contain;
-    border-radius: 12px;
+      .product-description {
+    flex-grow: 1;
+    font-size: 1.1rem;
+    line-height: 1.6;
     margin-bottom: 20px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    overflow-wrap: break-word;
+    text-align: left; /* ensures description starts from left */
 }
 
-/* Product Name */
-.product-name {
-    font-size: 28px;
-    margin-bottom: 10px;
-    font-weight: 600;
+.buttons form {
+    margin-bottom: 12px;
 }
 
-/* Product Price */
-.product-price {
-    font-size: 22px;
-    color: #555;
-    margin-bottom: 25px;
-}
-
-/* Form Layout */
-.product-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.product-form label {
-    font-size: 16px;
-    margin-bottom: 6px;
-    color: #444;
-}
-
-.product-form input[type="number"] {
-    width: 100px;
-    padding: 8px;
-    font-size: 16px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    text-align: center;
-}
-
-/* Buttons */
-.buttons {
-    display: flex;
-    flex-direction: column;
+.buttons button {
     width: 100%;
-    gap: 12px;
-}
-
-button[type="submit"] {
     padding: 12px;
-    font-size: 16px;
+    font-size: 1rem;
+    font-weight: bold;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
-    font-weight: 500;
     transition: background-color 0.3s ease;
-    width: 100%;
+}
+.delete-btn{
+	background-color: #6b3e3e;
+    color: white;
+}
+.delete-btn:hover {
+    background-color: #4b2e2e;
+}
+.add-to-cart {
+    background-color: #fdd18b;
+    color: #3e2c2c;
 }
 
-button[type="submit"]:first-child {
-    background-color: #f0c14b;
-    color: #111;
+.add-to-cart:hover {
+    background-color: #ffc76e;
 }
 
-button[type="submit"]:first-child:hover {
-    background-color: #e2ae3f;
-}
-
-button[formaction="buyNow"] {
-    background-color: #ff6f61;
+.buy-now {
+    background-color: #6b3e3e;
     color: white;
 }
 
-button[formaction="buyNow"]:hover {
-    background-color: #e85c4d;
+.buy-now:hover {
+    background-color: #4b2e2e;
 }
 
-/* Not Found Styling */
-h2 {
-    text-align: center;
-    margin-top: 100px;
-}
+      /* Scrollbar for description */
+ .right-column::-webkit-scrollbar {
+     width: 8px;
+ }
+ .right-column::-webkit-scrollbar-thumb {
+     background-color: #a2786a;
+     border-radius: 4px;
+ }
 
-a {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    text-decoration: none;
-    color: #555;
-}
-
-a:hover {
-    text-decoration: underline;
-}
+ /* Back link */
+ .back-link {
+     display: inline-block;
+     margin: 20px;
+     color: #6b3e3e;
+     font-weight: bold;
+ }

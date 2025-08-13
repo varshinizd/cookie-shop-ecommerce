@@ -16,7 +16,11 @@
 <body>
     <div class="top-bar">
         <h1>Welcome, <%= (currentUser != null) ? currentUser : "Guest" %>!</h1>
-        <input type="text" id="searchBox" placeholder="Search products...">
+        <form action="search" method="get" style="display:inline;">
+            <input type="text" name="query" placeholder="Search products..." style="padding: 8px;" required>
+            <button type="submit" style="padding: 8px;">🔍</button>
+        </form>
+
         <% if ("admin".equalsIgnoreCase(currentUser)) { %>
             <button class="add-btn" onclick="openOverlay()">+ Add Product</button>
         <% } else { %>
@@ -31,27 +35,26 @@
                for (Product p : products) {
                    String encodedName = java.net.URLEncoder.encode(p.getName(), "UTF-8");
         %>
-                    <a  class="link" href="productPage.jsp?name=<%= encodedName %>">
-                        <div class="product-card">
-                            <img src="image?name=<%= p.getImagePath() %>"
-                                 alt="Product Image"
-                                 style="width: 200px; height: auto; object-fit: cover;">
-                            <h3><%= p.getName() %></h3>
-                            <p><strong>₹ <%= p.getCost() %></strong></p>
-                     <%if ("admin".equalsIgnoreCase(currentUser)) {%>
-                     
-					<form action="deleteProduct" method="post" onsubmit="return confirm('Delete this product?');">
-					    <input type="hidden" name="name" value="<%= p.getName() %>">
-					    <button
-					     style="background-color: #6b3e3e; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer;" type="submit">Delete</button>
-					</form>
-                        </div>
-                    </a>
-                     <% } %>
-        <%     } 
-           } else { %>
+            <a class="link" href="productPage.jsp?name=<%= encodedName %>">
+                <div class="product-card">
+                    <img src="image?name=<%= p.getImagePath() %>" alt="Product Image" style="width:200px; height:auto; object-fit:cover;">
+                    <h3><%= p.getName() %></h3>
+                    <p><strong>₹ <%= p.getCost() %></strong></p>
+
+                    <% if ("admin".equalsIgnoreCase(currentUser)) { %>
+                        <form action="deleteProduct" method="post" onsubmit="return confirm('Delete this product?');">
+                            <input type="hidden" name="name" value="<%= p.getName() %>">
+                            <button style="background-color:#6b3e3e;color:white;border:none;padding:8px 16px;border-radius:5px;cursor:pointer;" type="submit">Delete</button>
+                        </form>
+                    <% } %>
+                </div>
+            </a>
+        <% 
+               } // end for
+           } else { 
+        %>
             <p class="no-products">No products to display.</p>
-        <% } %>
+        <% } // end if %>
     </div>
 
     <%-- Overlay Form (Admin Only) --%>
@@ -61,12 +64,10 @@
             <span class="close-btn" onclick="closeOverlay()">×</span>
             <h2>Add New Product</h2>
             <form action="addProduct" method="post" enctype="multipart/form-data">
-                <!-- Custom styled file input -->
                 <label for="productImage" class="custom-file-label">Choose Product Image</label>
                 <input type="file" id="productImage" name="image" accept="image/*" onchange="previewImage(event)" required>
                 <img id="imagePreview" src="#" alt="Image Preview" style="display: none;" />
 
-                <!-- Other form fields -->
                 <label for="name">Product Name:</label>
                 <input type="text" name="name" required>
 
