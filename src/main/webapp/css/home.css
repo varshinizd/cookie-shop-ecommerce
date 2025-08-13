@@ -7,8 +7,13 @@ body {
     color: #3e2c2c;
 }
 
-/* Top bar */
+/* Links */
+a {
+    text-decoration: none;
+    color: #3e2c2c;
+}
 
+/* Top bar */
 .top-bar {
     background-color: #6b3e3e;
     color: white;
@@ -17,6 +22,7 @@ body {
     align-items: center;
     padding: 16px 24px;
     flex-wrap: wrap;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .top-bar h1 {
@@ -24,16 +30,61 @@ body {
     margin: 0;
 }
 
+/* Search form */
+.top-bar form {
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-left: 16px;
+}
+
 #searchBox {
     padding: 8px 12px;
     font-size: 1rem;
-    border-radius: 6px;
     border: none;
-    margin: 8px;
+    outline: none;
     width: 200px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
 }
 
-/* Add button */
+#searchBtn {
+    background-color: #fdd18b;
+    border: none;
+    padding: 8px 14px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #3e2c2c;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+#searchBtn:hover {
+    background-color: #ffc76e;
+    transform: translateY(-1px);
+}
+
+/* Cart button */
+.top-bar a.cart-btn {
+    background-color: #fdd18b;
+    color: #3e2c2c;
+    font-weight: bold;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-left: 16px;
+    display: inline-block;
+}
+
+.top-bar a.cart-btn:hover {
+    background-color: #ffc76e;
+    transform: translateY(-1px);
+}
+
+/* Add button (admin) */
 .add-btn {
     background-color: #fdd18b;
     color: #3e2c2c;
@@ -42,24 +93,23 @@ body {
     border-radius: 8px;
     padding: 10px 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-left: 16px;
 }
 
 .add-btn:hover {
     background-color: #ffc76e;
+    transform: translateY(-1px);
 }
-.delete-btn
-{
-	background-color: #6b3e3e; 
-	color: white; 
-}
+
+/* Profile icon */
 .profile-icon {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     overflow: hidden;
-    margin-left: 16px;
     cursor: pointer;
+    margin-left: 16px;
 }
 
 .profile-icon img {
@@ -67,7 +117,6 @@ body {
     height: 100%;
     object-fit: cover;
 }
-
 
 /* Product grid */
 .product-grid {
@@ -78,10 +127,11 @@ body {
     padding: 32px;
 }
 
+/* Product card */
 .product-card {
     background-color: #fce8d5;
     border-radius: 18px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.12);
     width: 240px;
     text-align: center;
     padding: 16px;
@@ -90,16 +140,19 @@ body {
 
 .product-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.18);
 }
 
+/* Product image */
 .product-card img {
     border-radius: 12px;
     margin-bottom: 12px;
     max-width: 100%;
+    height: auto;
+    object-fit: cover;
 }
 
-/* Product name and cost */
+/* Product name and price */
 .product-card h3 {
     font-size: 1.2rem;
     margin: 8px 0 4px;
@@ -108,14 +161,33 @@ body {
 .product-card p {
     font-size: 1rem;
     color: #5c3b3b;
+    font-weight: bold;
 }
 
-.link
-{
-	text-decoration: none;
-	color: #5c3b3b;
-	display: block; 
+/* Links inside card */
+.link {
+    text-decoration: none;
+    color: #5c3b3b;
+    display: block;
 }
+
+/* Delete button (admin) */
+.delete-btn {
+    background-color: #6b3e3e;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 8px;
+}
+
+.delete-btn:hover {
+    background-color: #4b2e2e;
+    transform: translateY(-1px);
+}
+
 /* No product message */
 .no-products {
     font-size: 1.2rem;
@@ -124,7 +196,7 @@ body {
     padding: 48px;
 }
 
-/* Overlay form */
+/* Overlay form (admin add product) */
 .overlay {
     position: fixed;
     top: 0;
@@ -136,24 +208,21 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 999;
-    overflow: auto; /* enables scrolling when form is taller than viewport */
+    overflow: auto;
 }
 
 .form-box {
-    background-color: #ffffff;
+    background-color: #fce8d5;
     padding: 32px;
     border-radius: 16px;
     width: 90%;
     max-width: 500px;
     position: relative;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    max-height: 90vh;  /* limits form height */
-    overflow-y: auto;  /* enables internal scroll if content is too long */
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
-.form-box::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
-}
 .form-box h2 {
     margin-bottom: 20px;
     color: #4b2e2e;
@@ -173,7 +242,7 @@ body {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 12px;
     box-sizing: border-box;
     font-size: 1rem;
 }
@@ -186,25 +255,26 @@ textarea {
 #imagePreview {
     max-width: 100%;
     margin-top: 12px;
-    border-radius: 10px;
+    border-radius: 12px;
 }
 
 /* Submit button */
 .form-box button[type="submit"] {
     margin-top: 24px;
-    background-color: #fdd18b;
-    color: #3e2c2c;
+    background-color: #6b3e3e;
+    color: white;
     border: none;
     padding: 12px 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .form-box button[type="submit"]:hover {
-    background-color: #ffc76e;
+    background-color: #4b2e2e;
+    transform: translateY(-1px);
 }
 
 /* Close button */

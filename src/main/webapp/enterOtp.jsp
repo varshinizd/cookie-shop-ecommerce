@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Enter OTP</title>
-    <link rel="stylesheet" href="css/enterOtp.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/enterOtp.css?v=3">
     <script src="js/enterOtp.js" defer></script> <!-- Link the external JS file -->
 </head>
 <body>

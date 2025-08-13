@@ -11,16 +11,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Home - Product Listings</title>
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/home.css?v=4">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/home.css?v=6">
 </head>
 <body>
     <div class="top-bar">
         <h1>Welcome, <%= (currentUser != null) ? currentUser : "Guest" %>!</h1>
-        <form action="search" method="get" style="display:inline;">
-            <input type="text" name="query" placeholder="Search products..." style="padding: 8px;" required>
-            <button type="submit" style="padding: 8px;">🔍</button>
-        </form>
-
+        <form action="search" method="get">
+		    <input id="searchBox" type="text" name="query" placeholder="Search products..." required>
+		    <button id="searchBtn" type="submit">Search</button>
+		</form>
+		
+		<a href="<%= request.getContextPath() %>/cart">
+			<button>Cart</button>
+		</a>
         <% if ("admin".equalsIgnoreCase(currentUser)) { %>
             <button class="add-btn" onclick="openOverlay()">+ Add Product</button>
         <% } else { %>

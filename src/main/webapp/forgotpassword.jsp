@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Forgot Password</title>
-    <link rel="stylesheet" href="css/forgotpassword.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/forgotpassword.css?v=2">
 </head>
 <body>
     <div class="container">

@@ -1,62 +1,62 @@
 /* Reset and base setup */
- body {
-     margin: 0;
-     padding: 0;
-     font-family: 'Segoe UI', sans-serif;
-     background-color: #fffaf4;
-     color: #3e2c2c;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fffaf4;
+    color: #3e2c2c;
+}
+
+a { text-decoration: none; color: #3e2c2c; }
+
+/* Product page layout */
+ .product-page {
+     display: flex;
+     justify-content: center;
+     align-items: flex-start;
+     width: 90%;
+     max-width: 1200px;
+     margin: 40px auto;
+     gap: 40px;
  }
 
- a { text-decoration: none; color: #3e2c2c; }
+ .left-column {
+     flex: 1;
+     min-width: 300px;
+     background-color: #fce8d5;
+     border-radius: 18px;
+     padding: 20px;
+     text-align: center;
+     box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+ }
 
- /* Product page layout */
-  .product-page {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      width: 90%;
-      max-width: 1200px;
-      margin: 40px auto;
-      gap: 40px;
-  }
+ .left-column img {
+     width: 100%;
+     height: auto;
+     object-fit: cover;
+     border-radius: 12px;
+ }
 
-  .left-column {
-      flex: 1;
-      min-width: 300px;
-      background-color: #fce8d5;
-      border-radius: 18px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.12);
-  }
+ .product-price {
+     font-size: 1.5rem;
+     font-weight: bold;
+     margin-top: 16px;
+     color: #6b3e3e;
+ }
 
-  .left-column img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      border-radius: 12px;
-  }
+ .right-column {
+     flex: 2;
+     max-height: 600px;
+     overflow-y: auto;
+     padding: 30px;
+     background-color: #fce8d5;
+     border-radius: 18px;
+     box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+     display: flex;
+     flex-direction: column;
+ }
 
-  .product-price {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-top: 16px;
-      color: #6b3e3e;
-  }
-
-  .right-column {
-      flex: 2;
-      max-height: 600px;
-      overflow-y: auto;
-      padding: 30px;
-      background-color: #fce8d5;
-      border-radius: 18px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.12);
-      display: flex;
-      flex-direction: column;
-  }
-
-  .right-column h2 {
+ .right-column h2 {
 font-size: 2rem;
 margin-bottom: 20px;
 color: #6b3e3e;

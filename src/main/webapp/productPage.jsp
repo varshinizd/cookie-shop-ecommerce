@@ -47,6 +47,8 @@
                     <!-- Regular user sees Add to Cart and Buy Now -->
                     <form action="addToCart" method="post">
                         <input type="hidden" name="name" value="<%= product.getName() %>">
+                            <label for="quantity">Quantity:</label>
+    						<input type="number" name="quantity" value="1" min="1" required>
                         <button type="submit" class="add-to-cart">Add to Cart 🛒</button>
                     </form>
 

@@ -1,63 +1,76 @@
+/* Reset and base setup */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #fdf6f0; /* light cream background */
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fffaf4; /* same as product page */
+    color: #3e2c2c;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
 }
 
+a { text-decoration: none; color: #3e2c2c; }
+
+/* Container */
 .container {
-    background-color: #f9e8dd; /* pastel peachy-brown */
+    background-color: #fce8d5; /* matches product page card */
     padding: 30px 40px;
-    border-radius: 16px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 18px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.12);
     width: 350px;
     text-align: center;
 }
 
+/* Heading */
 h2 {
-    color: #734d4d; /* deep coffee brown */
+    color: #6b3e3e; /* deep coffee brown like product page */
     margin-bottom: 20px;
 }
 
+/* Labels */
 label {
-    color: #734d4d;
+    color: #3e2c2c;
     display: block;
     text-align: left;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
+/* Inputs */
 input[type="text"],
 input[type="password"],
 input[type="email"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #d9bfa8;
-    border-radius: 8px;
+    border: 1px solid #a2786a;
+    border-radius: 12px;
     background-color: #fff8f0;
     margin-bottom: 20px;
     box-sizing: border-box;
 }
 
+/* Submit button */
 input[type="submit"] {
-    background-color: #734d4d; /* warm brownie color */
+    width: 100%;
+    background-color: #6b3e3e;
     color: white;
-    padding: 10px 20px;
+    padding: 12px;
+    font-weight: bold;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 input[type="submit"]:hover {
-    background-color:  #885f39;
+    background-color: #4b2e2e;
 }
 
+/* Error message */
 .error-message {
-    color:#ff0000;
+    color: #ff0000;
     font-weight: bold;
     margin-top: 10px;
 }

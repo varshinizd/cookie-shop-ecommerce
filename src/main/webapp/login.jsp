@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Login Page</title>
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/login.css?v=1">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/login.css?v=2">
 </head>
 <body>
     <div class="login-container">
