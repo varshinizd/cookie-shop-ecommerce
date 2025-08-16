@@ -28,7 +28,9 @@
                 <td><%= item.getProductName() %></td>
                 <td><%= item.getQuantity() %></td>
                 <td>
-                    <a href="removeFromCart" class="btn">Remove</a>
+                    <a href="<%= request.getContextPath() %>/removeFromCart?productName=<%= java.net.URLEncoder.encode(item.getProductName(), "UTF-8") %>" 
+   class="btn">Remove</a>
+
                 </td>
             </tr>
         <% } %>

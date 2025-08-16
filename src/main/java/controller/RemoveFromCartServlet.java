@@ -27,8 +27,10 @@ public class RemoveFromCartServlet extends HttpServlet {
 
         if (productName != null) {
             CartDAO.removeFromCart(username, productName);
-            System.out.println("I didnt go to the cartservlet as expected ;)");
-            // You’ll add this in DAO
+        }
+        else
+        {
+        	System.out.println("I didnt go to the cartservlet as expected ;)");
         }
 
         // Redirect back to cart

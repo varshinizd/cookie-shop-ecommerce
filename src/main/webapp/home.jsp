@@ -21,9 +21,7 @@
 		    <button id="searchBtn" type="submit">Search</button>
 		</form>
 		
-		<a href="<%= request.getContextPath() %>/cart">
-			<button>Cart</button>
-		</a>
+		<a href="<%= request.getContextPath() %>/cart" class="cart-btn">Cart</a>
         <% if ("admin".equalsIgnoreCase(currentUser)) { %>
             <button class="add-btn" onclick="openOverlay()">+ Add Product</button>
         <% } else { %>
