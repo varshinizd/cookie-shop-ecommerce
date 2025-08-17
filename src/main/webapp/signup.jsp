@@ -15,7 +15,7 @@
 		    </div>
 		<% } %>
 
-        <form action="<%= request.getContextPath() %>/auth/signup" method="post">
+        <form action="<%= request.getContextPath() %>/signup" method="post">
             <label for="username">Username</label>
             <input type="text" name="username" id="username" required>
 

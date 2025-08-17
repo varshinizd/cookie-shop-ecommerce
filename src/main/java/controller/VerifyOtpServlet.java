@@ -46,12 +46,12 @@ public class VerifyOtpServlet extends HttpServlet {
             userDAO.registerUser(pendingUser);
             session.removeAttribute("pendingUser");
             session.setAttribute("user", pendingUser); // login immediately
-            response.sendRedirect("home.jsp");
+            response.sendRedirect("home");
             return;
         } else {
         	System.out.println("Redirecting to Dashboard2");
         	session.setAttribute("user", pendingUser);
-            response.sendRedirect("home.jsp");
+            response.sendRedirect("home");
         }
     }
 }
